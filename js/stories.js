@@ -26,7 +26,7 @@ function generateStoryMarkup(story) {
   const starHTML = getStarHTML(story, currentUser);
   let deleteButton = '';
 
-  if (currentUser) {
+  if (currentUser && $('body').hasClass('own-story')) {
     deleteButton = '<span class="trash-can"><i class="fas fa-trash-alt"></i></span>';
   }
 
@@ -188,6 +188,7 @@ $(document).on("click", ".trash-can", toggleStoryDelete);
 function myStoriesOnPage(){
   console.debug(myStoriesOnPage);
   $allStoriesList.empty();
+ $('body').addClass("own-story")
 
   if(currentUser.ownStories.length === 0){
     $allStoriesList.append($('<p>').text('No stories added by user yet!'));
@@ -196,7 +197,6 @@ function myStoriesOnPage(){
 
   for (let story of currentUser.ownStories) {
     const $story = generateStoryMarkup(story);
-    $story.addClass("own-story")
     $allStoriesList.append($story);
   }
   $allStoriesList.show();

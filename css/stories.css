@@ -57,11 +57,14 @@ p {
   padding-bottom: 20px;
 }
 
-.trash-can{
+
+
+.trash-can {
   display: inline-block;
   font-size: 10px;
   cursor: pointer;
 }
+
 
 #story-submit{
   width: 4rem;
